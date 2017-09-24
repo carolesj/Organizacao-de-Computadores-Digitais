@@ -18,7 +18,8 @@ Letra : var #1
 
 ;vetor de números 'aleatórios'
 Rand : var #10
-	;preenche com valores a memória
+	;preenche com valores "aleatórios" a memória, para que seja usada como
+	;	um vetor de rand
 	static Rand + #0, #0
 	static Rand + #1, #25
 	static Rand + #2, #96
@@ -66,3 +67,19 @@ MoveNave:
 		pop r1
 		pop r0
 		rts
+
+MoveNave_Desenha:
+	push r0
+	push r1
+	
+	;usando aspas simples pode-se dar load em caracteres. 
+	Loadn r1, #'X'
+	load R0, posNave
+	;imprime na tela o conteúdo de r1 na posição de r0
+	outchar R1, R0
+	;atualiza a posição da nave
+	store posAntNave, r0
+	
+	pop r1
+	pop r0
+	rts
